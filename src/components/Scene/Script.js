@@ -1,5 +1,6 @@
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
+import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 
 // Global variables
 let currentRef = null;
@@ -34,12 +35,20 @@ const animate = () => {
 };
 animate();
 
-// cubo
-const cubo = new THREE.Mesh(
-  new THREE.BoxBufferGeometry(1, 1, 1),
-  new THREE.MeshBasicMaterial()
+// load model 3d
+const gltfLoader = new GLTFLoader();
+gltfLoader.load(
+  "./model/scene.gltf",
+  (gltf) => {
+    scene.add(gltf.scene);
+  },
+  () => {
+    console.log("Progress");
+  },
+  () => {
+    console.log("Error");
+  }
 );
-scene.add(cubo);
 
 // Init and mount the scene
 export const initScene = (mountRef) => {
