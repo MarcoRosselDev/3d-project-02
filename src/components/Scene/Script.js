@@ -7,7 +7,7 @@ let currentRef = null;
 
 // Scene, camera, renderer
 const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(25, 100 / 100, 0.1, 100);
+const camera = new THREE.PerspectiveCamera(50, 100 / 100, 0.1, 100);
 scene.add(camera);
 camera.position.set(5, 5, 5);
 camera.lookAt(new THREE.Vector3());
@@ -49,6 +49,11 @@ gltfLoader.load(
     console.log("Error");
   }
 );
+
+// Lights
+const light1 = new THREE.DirectionalLight(0xffffff, 1);
+light1.position.set(3, 3, 3);
+scene.add(light1);
 
 // Init and mount the scene
 export const initScene = (mountRef) => {
