@@ -33,3 +33,23 @@ const animate = () => {
   requestAnimationFrame(animate);
 };
 animate();
+
+// cubo
+const cubo = new THREE.Mesh(
+  new THREE.BoxBufferGeometry(1, 1, 1),
+  new THREE.MeshBasicMaterial()
+);
+scene.add(cubo);
+
+// Init and mount the scene
+export const initScene = (mountRef) => {
+  currentRef = mountRef.current;
+  resize();
+  currentRef.appendChild(renderer.domElement);
+};
+
+// Dismount and clean up the buffer from the scene
+export const cleanUpScene = () => {
+  scene.dispose();
+  currentRef.removeChild(renderer.domElement);
+};
