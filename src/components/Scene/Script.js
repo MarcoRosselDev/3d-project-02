@@ -55,6 +55,10 @@ const light1 = new THREE.DirectionalLight(0xffffff, 1);
 light1.position.set(3, 3, 3);
 scene.add(light1);
 
+// Light 2
+const ambientalLight = new THREE.AmbientLight(0xffffff, 1);
+scene.add(ambientalLight);
+
 // Init and mount the scene
 export const initScene = (mountRef) => {
   currentRef = mountRef.current;
