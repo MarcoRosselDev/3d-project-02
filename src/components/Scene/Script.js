@@ -1,8 +1,5 @@
 import * as THREE from "three";
-import {
-  OrbitControls,
-  OrbitControls,
-} from "three/examples/jsm/controls/OrbitControls";
+import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 
 // Global variables
 let currentRef = null;
@@ -20,3 +17,19 @@ renderer.setSize(100, 100);
 // OrbitControls
 const orbitControls = new OrbitControls(camera, renderer.domElement);
 orbitControls.enableDamping = true;
+
+// Resize canvas
+const resize = () => {
+  renderer.setSize(currentRef.clientWidth, currentRef.clientHeight);
+  camera.aspect = currentRef.clientWidth / currentRef.clientHeight;
+  camera.updateProjectionMatrix();
+};
+window.addEventListener("resize", resize);
+
+// Animate the scene
+const animate = () => {
+  orbitControls.update();
+  renderer.render(scene, camera);
+  requestAnimationFrame(animate);
+};
+animate();
