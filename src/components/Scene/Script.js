@@ -56,7 +56,8 @@ light1.position.set(3, 3, 3);
 scene.add(light1);
 
 // Light 2
-const ambientalLight = new THREE.AmbientLight(0xffffff, 1);
+const ambientalLight = new THREE.AmbientLight(0xffffff, 5);
+// ambientalLight.position.set(1, 1, 1);
 scene.add(ambientalLight);
 
 // Init and mount the scene
